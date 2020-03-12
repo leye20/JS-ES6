@@ -1,8 +1,12 @@
-// import './Movies.Class.js';
-
+import { Movie } from './Movies.Class.js'; // Bring in our file
+// You'll have to use a server for this to work. brower 
 /**
  * Lets see what some of our newer array methods are...
  */
+
+ import { BuyableMovie } from './BuyableMovie.Class.js';
+
+ import { Calculator } from './Calculator.Class.js';
 
  // .find() method:
 var myArray = [ 'Hello, World', 2, 3, true, 5, null, 38 ];
@@ -120,7 +124,7 @@ myFunction = ( a, b ) => Number( a ) + Number( b );
 console.log( myFunction( 3, 8 ) );
 
 // Bigger function
-myOtherFunction = ( a, b ) => {
+var myOtherFunction = ( a, b ) => {
     const myAnswer = Number( a ) + Number( b );
     return myAnswer;
 }
@@ -131,7 +135,7 @@ console.log( myOtherFunction( 34, 6 ) );
  */
 
 // We can set defaults, to prevent errors in case nothing gets passed in for a parameter.
-addNums = ( x = 0, y = 0 ) => x + y;
+var addNums = ( x = 0, y = 0 ) => x + y;
 
 console.log( addNums() ); // o arguments, but our default values kick in.
 
@@ -140,7 +144,7 @@ console.log( addNums() ); // o arguments, but our default values kick in.
  */
 
 // Rest paramater MUST BE THE LAST PARAMETER.
-findHighNums = ( minNum = 0, ...args ) => { // ...args will capture any number of arguments that we pass!/ ... means we can pass in any amount of number.
+var findHighNums = ( minNum = 0, ...args ) => { // ...args will capture any number of arguments that we pass!/ ... means we can pass in any amount of number.
     minNum = Number( minNum );
     if ( minNum === NaN ) minNum = 0;
     const highNums = args.filter( ( element ) => element > minNum );
@@ -151,7 +155,7 @@ findHighNums = ( minNum = 0, ...args ) => { // ...args will capture any number o
 console.log( findHighNums( 5, 2, 20, 50, 3, 0, 10, 24, -508 ) );
 
 // Getting the sum of ALL numbers passed in!
-addAllNums = ( ...nums ) => nums.reduce( ( a, v ) => a + v );
+var addAllNums = ( ...nums ) => nums.reduce( ( a, v ) => a + v );
 console.log( addAllNums( 64, 6, 10, 20 ) );
 
 /**
@@ -223,45 +227,7 @@ myOrganiseName: { // This could be named anything... just a label
 
 console.log( myFinalResult );
 
-/**
- * Classes.
- * *** Check our import, thats how we're accessing this.
- */
 
-
-class Movie {
-    constructor( name, genre, year) {
-        this.name = name;
-        this.genre = genre;
-        this.year = year;
-    }
-    get getName() { // How we retrieve the property. A GETTER.
-        return this.name;
-    }
-    set setName( name ) { // How we store a new property value. A SETTER.
-        if ( typeof name === 'string' ) {
-            this.name = name;
-        } else {
-            this.name = name.toString();
-        }
-    }
-    get getYear() {
-        return 'y'+this.year;
-    }
-    set setYear( year ) {
-        this.year = Number( year );
-    }
-    showPoster() { // This is a method! we can name them as we'd like.
-        const info = `
-            MOVIE INFO
-            ==========
-            Name: ${this.name}
-            Genre: ${this.genre}
-            Year: ${this.year}
-        `;
-        return info;
-    }
-}
 
 const tron = new Movie( 'Disney\'s TRON', 'Adventure', 1982 );
 const dragonheart = new Movie( 'DragonHeart', 'Medieval Fantasy', 1996 );
@@ -270,3 +236,13 @@ const godfather = new Movie( 'Godfather II', 'Action/Thriller', 1974 );
 console.log( tron );
 console.log( dragonheart );
 console.log( godfather );
+
+const billAndTedsExecellentAdventure = new BuyableMovie( 'Bill and Ted\'s Excellent Adventure', 'Comedy', 1989 );
+billAndTedsExecellentAdventure.setPrice = '16.37';
+console.log( billAndTedsExecellentAdventure );
+
+// Using  regular (non-static) method. Called from OBJECTS.
+console.log( billAndTedsExecellentAdventure.showPoster() );
+
+console.log( Calculator.add( 3, 3, 3, 3, '3', 5 ) ); // 20
+console.log( Calculator.subtract( 16, 5 ) ); // 11
