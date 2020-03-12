@@ -246,3 +246,64 @@ console.log( billAndTedsExecellentAdventure.showPoster() );
 
 console.log( Calculator.add( 3, 3, 3, 3, '3', 5 ) ); // 20
 console.log( Calculator.subtract( 16, 5 ) ); // 11
+
+/**
+ * SETS
+ */
+
+let mySet = new Set();
+
+mySet.add( 5 );
+mySet.add( 5 );
+mySet.add( 2 );
+
+console.log( mySet );
+
+console.log( mySet.size );
+
+console.log( mySet.has( 5 ) );
+console.log( mySet.has( 36 ) );
+
+let mySetIterator = mySet.entries();
+console.log( mySetIterator.next().value ); // show value 1...
+console.log( mySetIterator.next().value ); // now value 2...
+console.log( mySetIterator.next().value ); // now value 3...
+// since sets contain only yunique values, there is no need for a proper
+// "key", as the value is already unique!
+
+mySet.delete( 'Hello, World :)' ); // remotes an element from your set
+console.log( mySet );
+
+/**
+ * Maps
+ */
+
+const myValues = { // old workaround was objects... but these are properties.
+    name: 'Billy',
+    age: 95,
+    greeting: 'Yo!'
+}
+
+console.log( myValues ); // Object... gross, not what this is intended for.
+
+const myMap = new Map( [ // We can pass an array of arrays...
+    [ 'name', 'Billy'], // [key, value]
+    [ 'age', 95],
+    [ 'greeting', 'Yo!']
+    [ 7, 'We can even use numbers as keys, unlike objects.']
+]);
+
+console.log( myMap.size ); // How many items in the map?
+console.log( myMap.has( 'age' ) ); // check for a key... // true
+console.log( myMap.get( 'age' ) ); //Grab our value from the key! // 95
+const myMapIterator = myMap.keys(); // gets an iterator
+console.log( myMapIterator.next().value ); // First item's value...
+console.log( myMapIterator.next().value ); // Second items value...
+console.log( myMapIterator.next().value );
+console.log( myMapIterator.next().value );
+console.log( myMapIterator.next().value ); // Fifth items value...
+
+console.log( myMap );
+
+myMap.clear();
+console.log( myMap.size );
